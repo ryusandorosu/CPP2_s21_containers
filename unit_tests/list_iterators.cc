@@ -205,6 +205,24 @@ TEST(ListIterators, EmptyListEndDereferencing) {
   EXPECT_TRUE(*s21_it == *std_it);
 }
 
+TEST(ListIterators, EmptyListBeginDereferencingConst) {
+  s21::list<int> s21_test;
+  std::list<int> std_test;
+  auto s21_it = s21_test.cbegin();
+  auto std_it = std_test.cbegin();
+  EXPECT_TRUE(*s21_it == 0);
+  EXPECT_TRUE(*s21_it == *std_it);
+}
+
+TEST(ListIterators, EmptyListEndDereferencingConst) {
+  s21::list<int> s21_test;
+  std::list<int> std_test;
+  auto s21_it = s21_test.cend();
+  auto std_it = std_test.cend();
+  EXPECT_TRUE(*s21_it == 0);
+  EXPECT_TRUE(*s21_it == *std_it);
+}
+
 TEST(ListIterators, EmptyListBeginIncrementation) {
   s21::list<int> s21_test;
   std::list<int> std_test;
@@ -218,6 +236,26 @@ TEST(ListIterators, EmptyListBeginDecrementation) {
   s21::list<int> s21_test;
   std::list<int> std_test;
   auto s21_it = --s21_test.begin();
+  auto std_it = --std_test.begin();
+  EXPECT_TRUE(*s21_it == 0);
+  EXPECT_TRUE(*s21_it == *std_it);
+}
+
+TEST(ListIterators, EmptyListBeginIncrementation2) {
+  s21::list<int> s21_test;
+  std::list<int> std_test;
+  auto s21_it = s21_test.begin();
+  ++s21_it;
+  auto std_it = ++std_test.begin();
+  EXPECT_TRUE(*s21_it == 0);
+  EXPECT_TRUE(*s21_it == *std_it);
+}
+
+TEST(ListIterators, EmptyListBeginDecrementation2) {
+  s21::list<int> s21_test;
+  std::list<int> std_test;
+  auto s21_it = s21_test.begin();
+  --s21_it;
   auto std_it = --std_test.begin();
   EXPECT_TRUE(*s21_it == 0);
   EXPECT_TRUE(*s21_it == *std_it);

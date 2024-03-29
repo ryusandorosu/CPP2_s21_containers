@@ -118,6 +118,12 @@ TEST(QueueModifiers, PopOneCompareStr) {
   EXPECT_TRUE(EqualQueues(s21_test, std_test));
 }
 
+TEST(QueueModifiers, ForCoverageS21) {
+  s21::queue<int> test{1, 2, 3};
+  s21::queue<int> compare{2, 3};
+  EXPECT_FALSE(EqualQueues(test, compare));
+}
+
 TEST(QueueModifiers, PopCorrectInt) {
   s21::queue<int> test{1, 2, 3};
   s21::queue<int> compare{2, 3};
@@ -137,6 +143,12 @@ TEST(QueueModifiers, PopCorrectStr) {
   s21::queue<std::string> compare{"wsx", "edc"};
   test.pop();
   EXPECT_TRUE(EqualQueues(test, compare));
+}
+
+TEST(QueueModifiers, ForCoverageStd) {
+  s21::queue<int> s21_test{1, 2, 3};
+  std::queue<int> std_test;
+  EXPECT_FALSE(EqualQueues(s21_test, std_test));
 }
 
 TEST(QueueModifiers, PopCompareInt) {

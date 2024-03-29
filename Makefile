@@ -24,8 +24,6 @@ VGFLAGS=--trace-children=yes --track-fds=yes --track-origins=yes --leak-check=fu
 # ---------------------------------------------------------------------------------------------------- #
 
 $(TARGET): clean $(OBJECTS)
-# seeems like this is not necessary with tpp files only:
-#	$(CC) -c $(FLAGS) $(SOURCES)
 	ar rcs $(TARGET) $(OBJECTS)
 
 test: clean $(TARGET)
@@ -37,7 +35,15 @@ ifeq ($(OS), Linux)
 	CK_FORK=no valgrind -s $(VGFLAGS) ./$(TESTEXE)
 else
 	CK_FORK=no leaks --atExit -- ./$(TESTEXE)
-#	./valgrind.sh
+endif
+
+valgrind: test
+ifeq ($(OS), Linux)
+	sudo ./valgrind_alpine
+# sudo ./valgrind_ubuntu
+else
+	./valgrind_alpine
+# ./valgrind_ubuntu
 endif
 
 style:

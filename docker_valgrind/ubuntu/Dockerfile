@@ -1,3 +1,4 @@
+#may not run on school macs
 FROM ubuntu:22.04
 
 RUN apt-get -y update; \

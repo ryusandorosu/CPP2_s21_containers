@@ -84,6 +84,12 @@ TEST(ListModifiersPop, PopBackOneCompareStr) {
   EXPECT_TRUE(EqualLists(s21_test, std_test));
 }
 
+TEST(ListModifiersPop, ForCorrectS21) {
+  s21::list<int> test{1, 2, 3};
+  s21::list<int> compare{2, 3};
+  EXPECT_FALSE(EqualLists(test, compare));
+}
+
 TEST(ListModifiersPop, PopFrontCorrectInt) {
   s21::list<int> test{1, 2, 3};
   s21::list<int> compare{2, 3};
@@ -148,6 +154,13 @@ TEST(ListModifiersPop, PopFrontCompareStr) {
   s21_test.pop_front();
   std_test.pop_front();
   EXPECT_TRUE(EqualLists(s21_test, std_test));
+}
+
+TEST(ListModifiersPop, ForCoverageStd) {
+  s21::list<int> s21_test{1, 2, 3};
+  std::list<int> std_test{1, 2, 3};
+  s21_test.pop_back();
+  EXPECT_FALSE(EqualLists(s21_test, std_test));
 }
 
 TEST(ListModifiersPop, PopBackCompareInt) {

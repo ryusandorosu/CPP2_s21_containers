@@ -3,11 +3,17 @@
 
 #include <gtest/gtest.h>
 
+#include <array>
 #include <list>
+#include <map>
 #include <queue>
+#include <set>
 #include <stack>
+#include <vector>
+//#include <multiset>
 
 #include "../s21_containers.h"
+#include "../s21_containersplus.h"
 
 template <typename T>
 bool EqualLists(const s21::list<T>& list1, const s21::list<T>& list2) {

@@ -100,6 +100,14 @@ TEST(ListModifiersMerge, DestListEmptyCorrectStr) {
   EXPECT_TRUE(src.empty());
 }
 
+TEST(ListModifiersMerge, DestListSameCompareInt) {
+  s21::list<int> s21_dest;
+  std::list<int> std_dest;
+  s21_dest.merge(s21_dest);
+  std_dest.merge(std_dest);
+  EXPECT_TRUE(EqualLists(s21_dest, std_dest));
+}
+
 TEST(ListModifiersMerge, DestListEmptyCompareInt) {
   s21::list<int> s21_dest;
   s21::list<int> s21_src = {30, 20, 10};

@@ -118,6 +118,12 @@ TEST(StackModifiers, PopOneCompareStr) {
   EXPECT_TRUE(EqualStacks(s21_test, std_test));
 }
 
+TEST(StackModifiers, ForCoverageS21) {
+  s21::stack<int> test{1, 2, 3};
+  s21::stack<int> compare{1, 2};
+  EXPECT_FALSE(EqualStacks(test, compare));
+}
+
 TEST(StackModifiers, PopCorrectInt) {
   s21::stack<int> test{1, 2, 3};
   s21::stack<int> compare{1, 2};
@@ -137,6 +143,12 @@ TEST(StackModifiers, PopCorrectStr) {
   s21::stack<std::string> compare{"qaz", "wsx"};
   test.pop();
   EXPECT_TRUE(EqualStacks(test, compare));
+}
+
+TEST(StackModifiers, ForCoverageStd) {
+  s21::stack<int> s21_test{1, 2, 3};
+  std::stack<int> std_test;
+  EXPECT_FALSE(EqualStacks(s21_test, std_test));
 }
 
 TEST(StackModifiers, PopCompareInt) {
